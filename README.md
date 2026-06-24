@@ -43,15 +43,15 @@ Powered by **YOLOv8** for object detection and **ByteTrack** for robust object t
 
 ### 🏠 Home Screen
 
-![Home](assets/screenshot_1.png)
+![Home](screenshot_1.jpg)
 
 ### 🎯 Object Detection
 
-![Detection](assets/screenshot_2.png)
+![Detection](screenshot_2.jpg)
 
 ### 📊 Detection Result
 
-![Result](assets/screenshot_3.png)
+![Result](screenshot_3.jpg)
 
 ## 📂 Project Structure
 
