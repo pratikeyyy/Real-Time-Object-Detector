@@ -1,169 +1,116 @@
-# CodeAlpha_ObjectDetection
+# 🎯 Real-Time Object Detector
 
-**Real-time Object Detection & Tracking using YOLOv8 + ByteTrack**
+> A high-performance real-time object detection system built using **YOLOv8**, **ByteTrack**, and **OpenCV** for accurate multi-object detection and tracking.
 
-Built for the [CodeAlpha](https://www.codealpha.tech) AI Internship — Task 4.
-
----
-
-## Features
-
-| Feature | Detail |
-|---|---|
-| Detection model | YOLOv8n (nano) — swap to `yolov8s/m/l/x.pt` for more accuracy |
-| Tracker | ByteTrack (built into Ultralytics, no extra install) |
-| Input sources | Webcam (live) or any video file |
-| Bounding boxes | Colour-coded per class |
-| Labels | Class name + confidence % + persistent Track ID |
-| HUD | Live FPS + object count + frame number |
-| Output | Auto-saved MP4 to the `output/` folder |
-| Controls | Q=Quit, P=Pause/Resume, S=Screenshot |
+![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python)
+![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green?style=for-the-badge&logo=opencv)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-red?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
 ---
 
-## Project Structure
+## 📌 Overview
 
-```
-CodeAlpha_ObjectDetection/
-├── main.py          ← Entry point (run this)
-├── detector.py      ← YOLOv8 + ByteTrack wrapper class
-├── utils.py         ← Drawing helpers + FPS counter
-├── requirements.txt ← All Python dependencies
-├── output/          ← Saved output videos go here
+**Real-Time Object Detector** is a computer vision application capable of detecting and tracking multiple objects from a webcam or video stream in real time.
+
+Powered by **YOLOv8** for object detection and **ByteTrack** for robust object tracking, the application delivers fast and accurate performance suitable for surveillance, traffic monitoring, smart automation, and AI-based vision systems.
+
+---
+
+## ✨ Features
+
+- 🎥 Real-time webcam object detection
+- 🎯 Multi-object detection
+- 📍 ByteTrack object tracking
+- ⚡ High-speed inference
+- 🖥️ Simple Python interface
+- 📦 Easy to run locally
+- 🚀 Modular project structure
+
+---
+
+## 🛠️ Tech Stack
+
+- Python
+- OpenCV
+- Ultralytics YOLOv8
+- ByteTrack
+- NumPy
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Screen
+
+![Home](assets/screenshot_1.png)
+
+### 🎯 Object Detection
+
+![Detection](assets/screenshot_2.png)
+
+### 📊 Detection Result
+
+![Result](assets/screenshot_3.png)
+
+## 📂 Project Structure
+
+```text
+Real-Time-Object-Detector/
+│
+├── detector.py
+├── main.py
+├── utils.py
+├── requirements.txt
+├── home.png
+├── result.png
 └── README.md
 ```
 
 ---
 
-## Setup
-
-### 1 — Create a virtual environment (recommended)
+## ⚙️ Installation
 
 ```bash
-python -m venv venv
+git clone https://github.com/pratikeyyy/Real-Time-Object-Detector.git
 
-# Windows
-venv\Scripts\activate
+cd Real-Time-Object-Detector
 
-# Linux / macOS
-source venv/bin/activate
-```
-
-### 2 — Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
 
-> **GPU users:** install the CUDA build of PyTorch first, then run the above:
-> ```bash
-> pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-> pip install -r requirements.txt
-> ```
-
-### 3 — First run (model auto-download)
-
-On the very first run, YOLOv8 will automatically download `yolov8n.pt` (~6 MB).  
-Internet connection required once only.
-
----
-
-## Usage
-
-### Webcam (default — camera index 0)
-
-```bash
-python main.py --source 0
-```
-
-### Video file
-
-```bash
-python main.py --source path/to/your/video.mp4
-```
-
-### Adjust confidence threshold
-
-```bash
-python main.py --source 0 --conf 0.5
-```
-
-### Use a larger (more accurate) model
-
-```bash
-python main.py --source demo.mp4 --weights yolov8m.pt
-```
-
-### Headless mode (no display window — for servers)
-
-```bash
-python main.py --source demo.mp4 --no-display
-```
-
-### Don't save output video
-
-```bash
-python main.py --source 0 --no-save
-```
-
-### Custom output directory
-
-```bash
-python main.py --source demo.mp4 --output-dir my_results
-```
-
-### All options
-
-```
---source      Source: '0' for webcam, or path to video file (default: 0)
---weights     YOLOv8 weights file (default: yolov8n.pt)
---conf        Confidence threshold 0–1 (default: 0.30)
---iou         NMS IoU threshold 0–1 (default: 0.50)
---output-dir  Folder for saved videos (default: output/)
---no-display  Disable preview window
---no-save     Do not save output video
+python main.py
 ```
 
 ---
 
-## Keyboard Controls
+## 🚀 Applications
 
-| Key | Action |
-|---|---|
-| `Q` or `ESC` | Quit |
-| `P` | Pause / Resume |
-| `S` | Save screenshot of current frame |
-
----
-
-## Model Options
-
-| Model | Size | Speed | Accuracy |
-|---|---|---|---|
-| yolov8n.pt | ~6 MB | ⚡ Fastest | Good |
-| yolov8s.pt | ~22 MB | Fast | Better |
-| yolov8m.pt | ~50 MB | Medium | Great |
-| yolov8l.pt | ~87 MB | Slow | Excellent |
-| yolov8x.pt | ~131 MB | Slowest | Best |
+- Smart Surveillance
+- Traffic Monitoring
+- Retail Analytics
+- Security Systems
+- AI Vision Projects
+- Smart City Solutions
 
 ---
 
-## Output
+## 📈 Future Improvements
 
-Processed videos are saved automatically to `output/` with this naming pattern:
-
-```
-output/tracked_<source>_<timestamp>.mp4
-```
-
----
-
-## Tech Stack
-
-- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) — detection + ByteTrack
-- [OpenCV](https://opencv.org) — video I/O, display, drawing
-- [PyTorch](https://pytorch.org) — inference backend
+- Custom YOLO model support
+- GPU optimization
+- Video file detection
+- Object counting
+- Face recognition integration
+- Web deployment
 
 ---
 
-*CodeAlpha AI Internship — Task 4: Object Detection and Tracking*
+## 👨‍💻 Author
+
+**Pratik Kumar**
+
+GitHub: https://github.com/pratikeyyy
+
+---
+
+⭐ If you found this project useful, consider giving it a Star.
